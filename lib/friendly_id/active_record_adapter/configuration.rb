@@ -42,7 +42,10 @@ module FriendlyId
       end
 
       def scope_for(record)
-        scope? ? record.send(scope).to_param : nil
+        if scope?
+          scope_value = record.send(scope)
+          scope_value.nil? ? nil : scope_value.to_param
+        end
       end
 
       def scopes_over?(klass)

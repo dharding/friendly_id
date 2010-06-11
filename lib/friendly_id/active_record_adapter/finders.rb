@@ -68,7 +68,7 @@ module FriendlyId
         end
 
         def scoped?
-          !! options[:scope]
+          options.key?(:scope)
         end
 
         def single_slugged_finder_class
